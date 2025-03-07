@@ -60,8 +60,21 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_q:
+                running = False
+            if event.key == pygame.K_a:
+                auto = not auto
+            if event.key ==  pygame.K_SPACE:
+                auto = False
+                calculate_next_gen(grid)
+            if event.key == pygame.K_c:
+                auto = False
+                for row in range(CELL_ROW_COUNT):
+                    for col in range(CELL_COL_COUNT):
+                        grid[row][col] = False
 
-    keys = pygame.key.get_pressed()
+
     (left, _, right) = pygame.mouse.get_pressed()
 
     is_any_cell_alive = any(map( lambda rows: any(rows), grid ) )
@@ -74,29 +87,14 @@ while running:
 
         grid[gridy][gridx] = True if left else False
 
-    if keys[pygame.K_SPACE] and not auto:
-        calculate_next_gen(grid)
-
-    if keys[pygame.K_q]:
-        running = False
-
-    if keys[pygame.K_a]:
-        auto = not auto
-
     if auto:
         calculate_next_gen(grid)
-
-    if keys[pygame.K_c]:
-         auto = False
-         for row in range(CELL_ROW_COUNT):
-            for col in range(CELL_COL_COUNT):
-                grid[row][col] = False
 
     # Rendering cells
     for row in range(CELL_ROW_COUNT):
         for col in range(CELL_COL_COUNT):
 
-            color = "white" if grid[row][col] else "blue"
+            color = "green" if grid[row][col] else "gray"
             r = (row * CELL_SIZE)
             c = (col * CELL_SIZE)
 
