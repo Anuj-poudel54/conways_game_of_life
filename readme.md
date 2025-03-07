@@ -19,3 +19,14 @@ python gol.py
 `mouse left click` Make the cell alive
 
 `mouse right click` Make the cell dead
+
+### Todos
+
+- [ ] Implement saving and loading feature using .rle files.
+- [ ] Command for loading file while opening program
+    ```shell
+    $ python gol.py [filename]
+    ```
+    
+
+
