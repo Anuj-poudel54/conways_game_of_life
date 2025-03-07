@@ -5,18 +5,21 @@
 pip install requirements.txt
 python gol.py
 ```
+### Shortcuts
 `a` Toggle automatic
 
-`c` Clear all cells
+`c` Kill all cells / clear screen
 
 `space` Generate next generation manually
 
-`mouse right click` Make the cell alive
+`mouse left click` Make the cell alive
 
-`mouse left click` Make the cell dead
+`mouse right click` Make the cell dead
 
 ## Examples
 
 ### Glider
 
-![glider video](./glider.mp4)
+<video autoplay loop>
+  <source src="./glider.mp4" type="video/mp4">
+</video>
