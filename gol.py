@@ -1,18 +1,23 @@
-from copy import deepcopy
 import pygame
+from collections import Counter
+from functools import reduce
 pygame.init()
 
 # pygame setup
 WINDOW_WIDTH, WINDOW_HEIGHT = (600, 600)
 CELL_SIZE = 20
-CELL_ROW_COUNT =  int(WINDOW_HEIGHT / CELL_SIZE)
-CELL_COL_COUNT =  int(WINDOW_WIDTH / CELL_SIZE)
+
+CELL_ROW_COUNT =  WINDOW_HEIGHT // CELL_SIZE
+CELL_COL_COUNT =  WINDOW_WIDTH // CELL_SIZE
 
 pygame.display.set_caption("Conway's game of life")
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
+font = pygame.font.Font(pygame.font.get_default_font(), 20)
+
 running = True
-FPS = 10
+FPS = 60
+generations = 0
 
 grid: list[list[bool]] = [ [False for _ in range(CELL_COL_COUNT) ] for _ in range(CELL_ROW_COUNT) ]
 
@@ -29,6 +34,7 @@ def calculate_live_neighbours(row, col) -> int:
 
     return count
 
+is_any_cell_alive = False
 def calculate_next_gen(grid):
     # Updating grid
     update_list = []
@@ -44,7 +50,12 @@ def calculate_next_gen(grid):
     for (x,y), alive in update_list:
         grid[x][y] = alive
 
+    global generations, is_any_cell_alive
+    if is_any_cell_alive:
+        generations += 1
+
 auto = False
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -53,6 +64,9 @@ while running:
     keys = pygame.key.get_pressed()
     (left, _, right) = pygame.mouse.get_pressed()
 
+    is_any_cell_alive = any(map( lambda rows: any(rows), grid ) )
+    populations = Counter(reduce( lambda x,y: x + y , grid, [] ))[True]
+    
     if left or right:
         (x, y) = pygame.mouse.get_pos()
         gridy = x // CELL_SIZE
@@ -62,6 +76,9 @@ while running:
 
     if keys[pygame.K_SPACE] and not auto:
         calculate_next_gen(grid)
+
+    if keys[pygame.K_q]:
+        running = False
 
     if keys[pygame.K_a]:
         auto = not auto
@@ -75,14 +92,24 @@ while running:
             for col in range(CELL_COL_COUNT):
                 grid[row][col] = False
 
+    # Rendering cells
     for row in range(CELL_ROW_COUNT):
         for col in range(CELL_COL_COUNT):
 
-            color = "white" if grid[row][col] else "black"
+            color = "white" if grid[row][col] else "blue"
             r = (row * CELL_SIZE)
             c = (col * CELL_SIZE)
 
             pygame.draw.rect(window, color, pygame.Rect(r, c, CELL_SIZE, CELL_SIZE), border_radius=2)
+
+
+    text_surfaces = []
+    text_surfaces.append(font.render(f'Generations: {generations}', True, "white"))
+    text_surfaces.append(font.render(f'Populations: {populations}', True, "white"))
+    
+    for i, text_surface in enumerate(text_surfaces):
+        window.blit(text_surface, (0, text_surfaces[i].get_height() + 17 * i ))
+
 
     pygame.display.flip()
 
