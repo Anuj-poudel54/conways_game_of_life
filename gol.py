@@ -82,8 +82,8 @@ while running:
     
     if left or right:
         (x, y) = pygame.mouse.get_pos()
-        gridy = x // CELL_SIZE
-        gridx = y // CELL_SIZE
+        gridx = (y // CELL_SIZE) % CELL_COL_COUNT
+        gridy = (x // CELL_SIZE) % CELL_ROW_COUNT
 
         grid[gridy][gridx] = True if left else False
 
@@ -102,8 +102,8 @@ while running:
 
 
     text_surfaces = []
-    text_surfaces.append(font.render(f'Generations: {generations}', True, "white"))
-    text_surfaces.append(font.render(f'Populations: {populations}', True, "white"))
+    text_surfaces.append(font.render(f'Generations: {generations}', True, "black"))
+    text_surfaces.append(font.render(f'Populations: {populations}', True, "black"))
     
     for i, text_surface in enumerate(text_surfaces):
         window.blit(text_surface, (0, text_surfaces[i].get_height() + 17 * i ))
