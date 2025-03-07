@@ -4,7 +4,7 @@ from functools import reduce
 pygame.init()
 
 # pygame setup
-WINDOW_WIDTH, WINDOW_HEIGHT = (600, 600)
+WINDOW_WIDTH, WINDOW_HEIGHT = (700, 700)
 CELL_SIZE = 20
 
 CELL_ROW_COUNT =  WINDOW_HEIGHT // CELL_SIZE
