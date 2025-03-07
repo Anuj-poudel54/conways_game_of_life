@@ -60,9 +60,16 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+        # Key board event
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_q:
                 running = False
+            # FPS handling for fast or slow (Not good idea i guess?????)
+            if event.key == pygame.K_s:
+                FPS -= 4 if FPS >= 10 else 0
+            if event.key == pygame.K_f:
+                FPS += 4 if FPS <= 60 else 0
             if event.key == pygame.K_a:
                 auto = not auto
             if event.key ==  pygame.K_SPACE:
