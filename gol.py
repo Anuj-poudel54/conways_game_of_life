@@ -94,7 +94,7 @@ while running:
     for row in range(CELL_ROW_COUNT):
         for col in range(CELL_COL_COUNT):
 
-            color = "green" if grid[row][col] else "gray"
+            color = "black" if grid[row][col] else "gray"
             r = (row * CELL_SIZE)
             c = (col * CELL_SIZE)
 
