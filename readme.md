@@ -1,5 +1,5 @@
 ## Conway's game of life
-[wiki](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+[Game of life - wiki](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
 ```python
 pip install requirements.txt
@@ -13,6 +13,13 @@ python gol.py
 
 `c` Kill all cells / clear screen
 
+`s` Slows down speed if in automatic
+
+`f` Increase the speed if in automatic
+
+`ctrl + s` Saves current state of game in to the file [TODO]
+
+`l` Load file [TODO]
 
 `space` Generate next generation manually
 
