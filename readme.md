@@ -29,11 +29,10 @@ python gol.py
 
 ### Todos
 
+- [ ] Create seperate window for rendering cells rectangle.
 - [ ] Implement saving and loading feature using .rle files.
+    - [ x ]  Loading from .rle file
 - [ ] Command for loading file while opening program
     ```shell
     $ python gol.py [filename]
     ```
-    
-
-
