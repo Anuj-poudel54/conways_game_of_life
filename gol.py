@@ -105,7 +105,7 @@ while running:
             r = (row * CELL_SIZE)
             c = (col * CELL_SIZE)
 
-            pygame.draw.rect(window, color, pygame.Rect(r, c, CELL_SIZE, CELL_SIZE), border_radius=2)
+            pygame.draw.rect(window, color, pygame.Rect(c, r, CELL_SIZE, CELL_SIZE), border_radius=2)
 
 
     text_surfaces = []
