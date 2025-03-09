@@ -55,4 +55,4 @@ def load_game_rle(file_path: str | Path, grid: list[list[bool]]) -> list[list[bo
 
 
 if __name__ == "__main__":
-    load_game_rle("./patterns/glider.rle", [[None for _ in range(100)] for _ in range(100)])
+    load_game_rle("../example_patterns/glider.rle", [[None for _ in range(100)] for _ in range(100)])
