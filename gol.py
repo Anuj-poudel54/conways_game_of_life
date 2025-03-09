@@ -34,6 +34,15 @@ def calculate_live_neighbours(row, col) -> int:
 
     return count
 
+def dprint_grid(grid: list[list[bool]]):
+    for row in grid:
+        for col in row:
+            if col:
+                print("X", end=" ")
+            else:
+                print("-", end=" ")
+        print()
+
 is_any_cell_alive = False
 def calculate_next_gen(grid):
     # Updating grid
@@ -53,6 +62,8 @@ def calculate_next_gen(grid):
     global generations, is_any_cell_alive
     if is_any_cell_alive:
         generations += 1
+
+dprint_grid(grid)
 
 auto = False
 
