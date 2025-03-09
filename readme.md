@@ -10,7 +10,7 @@ python gol.py
 ### Loading pattern from Run-Length Encoding (.rle) file
 ```python
 # python gol.py /path/to/rle_file
-python ./gol.py ./example_patterns/glider.rle
+python ./gol.py path/to/proj_dir/example_patterns/glider.rle
 ```
 *You can get rle pattern files from [patterns](https://conwaylife.com/wiki/Pattern_of_the_Year)*
 
