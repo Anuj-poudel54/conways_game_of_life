@@ -6,13 +6,15 @@ from functools import reduce
 from load_game_file import load_game_rle
 import sys
 import os
+from pathlib import Path
 pygame.init()
-
+cwd = Path(os.getcwd())
 # getting file name
 argv = sys.argv[1:]
 file_path = None
 if argv:
-    file_path = argv[0] if os.path.isfile(argv[0]) else None
+    file_path = (cwd / argv[0] )
+    file_path = file_path if os.path.isfile(file_path) else None
 
 # pygame setup
 WINDOW_WIDTH, WINDOW_HEIGHT = (700, 700)
