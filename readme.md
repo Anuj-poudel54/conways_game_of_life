@@ -4,6 +4,7 @@
 ### Installing
 ```python
 pip install requirements.txt
+cd ./src
 python gol.py
 ```
 
