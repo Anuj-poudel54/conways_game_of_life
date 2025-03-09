@@ -1,7 +1,16 @@
 import pygame
 from collections import Counter
 from functools import reduce
+from load_game_file import load_game_rle
+import sys
+import os
 pygame.init()
+
+# getting file name
+argv = sys.argv[1:]
+file_path = None
+if argv:
+    file_path = argv[0] if os.path.isfile(argv[0]) else None
 
 # pygame setup
 WINDOW_WIDTH, WINDOW_HEIGHT = (700, 700)
@@ -20,6 +29,9 @@ FPS = 60
 generations = 0
 
 grid: list[list[bool]] = [ [False for _ in range(CELL_COL_COUNT) ] for _ in range(CELL_ROW_COUNT) ]
+
+if file_path:
+    grid = load_game_rle(file_path, grid)
 
 def calculate_live_neighbours(row, col) -> int:
     count = 0
@@ -66,7 +78,6 @@ def calculate_next_gen(grid):
 dprint_grid(grid)
 
 auto = False
-
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
