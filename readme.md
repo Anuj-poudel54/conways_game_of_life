@@ -7,7 +7,7 @@ pip install requirements.txt
 python gol.py
 ```
 
-### Loading pattern from Run-Lenght Encoding (.rle) file
+### Loading pattern from Run-Length Encoding (.rle) file
 ```python
 # python gol.py /path/to/rle_file
 python ./gol.py ./example_patterns/glider.rle
@@ -26,6 +26,8 @@ python ./gol.py ./example_patterns/glider.rle
 
 `f` Increase the speed if in automatic
 
+`ctrl +🖱️` Move cells
+
 `ctrl + s` Saves current state of game in to the file [TODO]
 
 `l` Load file [TODO]
@@ -39,9 +41,12 @@ python ./gol.py ./example_patterns/glider.rle
 ### Todos
 
 - [ ] Create seperate window for rendering cells rectangle.
+- [ ] Create seperate window for rendering cells rectangle.
+- [ ] Running it on just CLI would be great 🤷🏻.
 - [ ] Implement saving and loading feature using .rle files.
     - [x]  Loading from .rle file
-- [ ] Command for loading file while opening program
+- [x] Create seperate window for rendering cells rectangle.
+- [x] Command for loading file while opening program
     ```shell
     $ python gol.py [filename]
     ```
