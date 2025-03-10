@@ -27,6 +27,8 @@ class Renderer(ABC):
 
 
     def start_loop(self):
+        """ Contains main loop. It calls self.render method and self.clean after loop is exited """
+
         running = None
         while running == None:
 
@@ -57,7 +59,7 @@ class Renderer(ABC):
         if self.is_any_cell_alive:
             self.generations += 1
 
-    def _calculate_live_neighbours(self, row, col) -> int:
+    def _calculate_live_neighbours(self, row: int, col: int) -> int:
         count = 0
         for i in range(-1, 2):
             for j in range(-1, 2):

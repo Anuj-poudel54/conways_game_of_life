@@ -39,7 +39,7 @@ class GUIRenderer(Renderer):
 
         self.fps = 60
 
-    def render(self):
+    def render(self) -> bool:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
