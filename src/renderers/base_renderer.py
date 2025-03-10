@@ -25,6 +25,8 @@ class Renderer(ABC):
 
         self.grid = grid if grid else [ [False for _ in range(self.CELL_COL_COUNT) ] for _ in range(self.CELL_ROW_COUNT) ]
 
+        self.fps = 60
+
 
     def start_loop(self):
         """ Contains main loop. It calls self.render method and self.clean after loop is exited """

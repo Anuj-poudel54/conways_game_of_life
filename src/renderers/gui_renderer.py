@@ -37,8 +37,6 @@ class GUIRenderer(Renderer):
         self.move_mode = False      ## TO move cells surface.
         self.last_mouse_pos = (0,0) ## For tracking how much mouse moved while pressing ctrl.
 
-        self.fps = 60
-
     def render(self) -> bool:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
