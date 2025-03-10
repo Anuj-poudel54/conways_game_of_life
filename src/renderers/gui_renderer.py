@@ -123,16 +123,10 @@ class GUIRenderer(Renderer):
 
                 pygame.draw.rect(self.cells_surface, color, pygame.Rect(c, r, self.CELL_SIZE, self.CELL_SIZE), border_radius=2)
 
+        pygame.display.set_caption(f"Conway's game of life \t Populations: {self.populations} | Generations: {self.generations} ")
 
-        text_surfaces = []
-        text_surfaces.append(self.font.render(f'Generations: {self.generations}', True, "black"))
-        text_surfaces.append(self.font.render(f'Populations: {self.populations}', True, "black"))
-        
         # Rendering cell surface at the center of window
         self.window.blit(self.cells_surface, self.cell_surface_coord)
-        
-        for i, text_surface in enumerate(text_surfaces):
-            self.window.blit(text_surface, (0, text_surfaces[i].get_height() + 17 * i ))
 
         pygame.display.update(self.cells_surface.get_rect())
 
