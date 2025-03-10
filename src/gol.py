@@ -33,9 +33,6 @@ if __name__ == "__main__":
         exit(-1)
 
     surface_size=(1000, 1000)
-    if renderer_mode == 'cli':
-        surface_size=(500, 500)
-    
     renderer_class = renderer_factory(renderer_mode)
     renderer = renderer_class(surface_size=surface_size)
     if file_path:
