@@ -130,7 +130,7 @@ class GUIRenderer(Renderer):
         for i, text_surface in enumerate(text_surfaces):
             self.window.blit(text_surface, (0, text_surfaces[i].get_height() + 17 * i ))
 
-        pygame.display.flip()
+        pygame.display.update(self.cells_surface.get_rect())
 
         self.clock.tick(self.fps)
 
