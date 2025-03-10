@@ -81,6 +81,10 @@ class GUIRenderer(Renderer):
                         for col in range(self.CELL_COL_COUNT):
                             self.grid[row][col] = False
 
+        return True
+
+    def render(self) -> bool:
+
         # Handling mouse events
         (left, _, right) = pygame.mouse.get_pressed()
         if left or right:
@@ -133,6 +137,9 @@ class GUIRenderer(Renderer):
         pygame.display.update(self.cells_surface.get_rect())
 
         self.clock.tick(self.fps)
+
+        if not self._handle_events(): return False
+        return True
 
     def clean(self):
         pygame.quit()
