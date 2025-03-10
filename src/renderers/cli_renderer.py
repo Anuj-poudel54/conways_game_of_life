@@ -12,3 +12,5 @@ class CLIRenderer(Renderer):
         self._dprint_grid()
         self._calculate_next_gen()
         time.sleep(.2)
+
+        return True

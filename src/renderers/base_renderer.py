@@ -31,8 +31,8 @@ class Renderer(ABC):
     def start_loop(self):
         """ Contains main loop. It calls self.render method and self.clean after loop is exited """
 
-        running = None
-        while running == None:
+        running = True
+        while running:
 
             running = self.render()
 
@@ -40,7 +40,6 @@ class Renderer(ABC):
             self.is_any_cell_alive = any(map( lambda rows: any(rows), self.grid ) )
             self.populations = Counter(reduce( lambda x,y: x + y , self.grid, [] ))[True]
 
-            # TODO: FPS
         self.clean()
 
     def _calculate_next_gen(self):
