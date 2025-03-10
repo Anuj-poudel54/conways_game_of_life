@@ -29,7 +29,6 @@ if argv:
 if __name__ == "__main__":
     renderer_class = renderer_factory(renderer_selecter)
     renderer = renderer_class(surface_size=(500, 500))
-    print(file_path)
     if file_path:
         renderer.grid = load_game_rle(file_path,  renderer.grid)
     renderer.start_loop()
