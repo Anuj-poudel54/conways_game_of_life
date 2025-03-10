@@ -31,8 +31,8 @@ class Renderer(ABC):
     def start_loop(self):
         """ Contains main loop. It calls self.render method and self.clean after loop is exited """
 
-        running = True
-        while running:
+        running = None
+        while running == None:
 
             running = self.render()
 
