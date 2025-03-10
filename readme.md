@@ -40,11 +40,11 @@ python ./gol.py path/to/proj_dir/example_patterns/glider.rle
 
 ### Todos
 
-- [ ] Create seperate window for rendering cells rectangle.
-- [ ] Create seperate window for rendering cells rectangle.
 - [ ] Running it on just CLI would be great 🤷🏻.
+    - [ ] Complete CLIRenderer.
 - [ ] Implement saving and loading feature using .rle files.
     - [x]  Loading from .rle file
+- [x] Create seperate window for rendering cells rectangle.
 - [x] Create seperate window for rendering cells rectangle.
 - [x] Command for loading file while opening program
     ```shell
