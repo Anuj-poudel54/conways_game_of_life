@@ -10,9 +10,22 @@ python ./src/gol.py
 ### Loading pattern from Run-Length Encoding (.rle) file
 ```python
 # python ./src/gol.py /path/to/rle_file
-python ./src/gol.py ./example_patterns/glider.rle
+
+# GUI
+python ./src/gol.py
+python ./src/gol.py -f ./example_patterns/glider.rle
+
+# CLI
+python ./src/gol.py -r cli -f ./example_patterns/glider.rle
+
 ```
 *You can get rle pattern files from [patterns](https://conwaylife.com/wiki/Pattern_of_the_Year)*
+
+### Flags
+`-r` Renderer 'cli' or 'gui'. If not provided default is 'gui'
+
+`-f` filename.
+
 
 ### Shortcuts
 
