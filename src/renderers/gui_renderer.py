@@ -109,6 +109,9 @@ class GUIRenderer(Renderer):
 
                 self.grid[gridx][gridy] = True if left else False
                 self.window.fill("black")
+        
+        if not self.is_any_cell_alive:
+            self.auto = False
 
         if self.auto:
             self._calculate_next_gen()
