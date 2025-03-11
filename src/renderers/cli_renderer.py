@@ -3,7 +3,7 @@ from .base_renderer import Renderer
 import time, os
 
 class CLIRenderer(Renderer):
-    def __init__(self, grid = None, surface_size = ...):
+    def __init__(self, grid = None, surface_size = (1000, 1000)):
         super().__init__(grid, surface_size)
         self._wrap_around = True
 
