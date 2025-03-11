@@ -23,7 +23,7 @@ class Renderer(ABC):
         self.populations = 0
         self.generations = 0
 
-        self.grid = grid if grid else [ [False for _ in range(self.CELL_COL_COUNT) ] for _ in range(self.CELL_ROW_COUNT) ]
+        self.grid = grid if grid else [ [False for _ in range(round(self.CELL_COL_COUNT)) ] for _ in range(round(self.CELL_ROW_COUNT)) ]
 
         self.fps = 60
 
