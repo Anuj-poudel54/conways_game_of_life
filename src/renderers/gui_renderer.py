@@ -108,7 +108,6 @@ class GUIRenderer(Renderer):
                 self.last_mouse_pos = (x, y)
                 self.window.fill("black")
             else:
-                # self.cell_surface_coord = (0,0) ## Should remove, it is here for not able to clik on intended cell when surface is moved.
                 gridx = ((x - self.cell_surface_coord[0]) // self.CELL_SIZE)% self.CELL_COL_COUNT
                 gridy = ((y - self.cell_surface_coord[1]) // self.CELL_SIZE)% self.CELL_ROW_COUNT
 
