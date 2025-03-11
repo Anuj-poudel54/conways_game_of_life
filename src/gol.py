@@ -1,5 +1,5 @@
 
-from load_game_file import load_game_rle
+from loaders import load_rle
 from renderers import renderer_factory
 
 import sys
@@ -35,6 +35,6 @@ if __name__ == "__main__":
     renderer_class = renderer_factory(renderer_mode)
     renderer = renderer_class()
     if file_path:
-        renderer.grid = load_game_rle(file_path,  renderer.grid)
+        renderer.grid = load_rle(file_path,  renderer.grid)
     renderer.start_loop()
 
