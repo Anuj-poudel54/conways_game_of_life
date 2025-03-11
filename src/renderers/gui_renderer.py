@@ -2,19 +2,24 @@ from .base_renderer import Renderer
 
 import pygame
 from pygame.surface import Surface
-
 class GUIRenderer(Renderer):
     def __init__(self,
                 grid: list[list[bool]] = None, 
-                surface_size: tuple[int] = (700, 700),
-                window_size: tuple[int] = (700, 700),
+                surface_size: tuple[int] = None,
+                window_size: tuple[int] = None,
                 ):
-        super().__init__(grid, surface_size)
 
         pygame.init()
 
         # pygame setup
-        self.WINDOW_WIDTH, self.WINDOW_HEIGHT = window_size
+        desktop_size = pygame.display.get_desktop_sizes()[0]
+        self.WINDOW_WIDTH, self.WINDOW_HEIGHT = window_size if window_size else (desktop_size[0]*.9, desktop_size[1] * .9 )
+
+        if not surface_size:
+            self.CELL_SURFACE_WIDTH, self.CELL_SURFACE_HEIGHT = self.WINDOW_WIDTH, self.WINDOW_HEIGHT
+
+        super().__init__(grid, (self.CELL_SURFACE_WIDTH, self.CELL_SURFACE_HEIGHT))
+
         self.CELL_SIZE = 20
 
         self.CELL_ROW_COUNT =  self.WINDOW_HEIGHT // self.CELL_SIZE
@@ -22,7 +27,7 @@ class GUIRenderer(Renderer):
 
         # window and surface settings
         pygame.display.set_caption("Conway's game of life")
-        self.window = pygame.display.set_mode((self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
+        self.window = pygame.display.set_mode((self.WINDOW_WIDTH , self.WINDOW_HEIGHT))
         self.cells_surface = Surface((self.CELL_SURFACE_WIDTH, self.CELL_SURFACE_HEIGHT))
 
         self.clock = pygame.time.Clock()
@@ -103,11 +108,11 @@ class GUIRenderer(Renderer):
                 self.last_mouse_pos = (x, y)
                 self.window.fill("black")
             else:
-                self.cell_surface_coord = (0,0) ## Should remove, it is here for not able to clik on intended cell when surface is moved.
-                gridx = (y // self.CELL_SIZE)% self.CELL_ROW_COUNT
-                gridy = (x // self.CELL_SIZE)% self.CELL_COL_COUNT
+                # self.cell_surface_coord = (0,0) ## Should remove, it is here for not able to clik on intended cell when surface is moved.
+                gridx = ((x - self.cell_surface_coord[0]) // self.CELL_SIZE)% self.CELL_COL_COUNT
+                gridy = ((y - self.cell_surface_coord[1]) // self.CELL_SIZE)% self.CELL_ROW_COUNT
 
-                self.grid[gridx][gridy] = True if left else False
+                self.grid[gridy][gridx] = True if left else False
                 self.window.fill("black")
         
         if not self.is_any_cell_alive:
