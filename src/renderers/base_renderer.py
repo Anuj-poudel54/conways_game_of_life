@@ -85,7 +85,7 @@ class Renderer(ABC):
         for row in self.grid:
             for col in row:
                 if col:
-                    print("O", end=" ")
+                    print("@", end=" ")
                 else:
                     print(" ", end=" ")
             print()
