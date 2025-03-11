@@ -32,9 +32,8 @@ if __name__ == "__main__":
         print("       Use '-f <file_path>' flag for passing file.")
         exit(-1)
 
-    surface_size=(1000, 1000)
     renderer_class = renderer_factory(renderer_mode)
-    renderer = renderer_class(surface_size=surface_size)
+    renderer = renderer_class()
     if file_path:
         renderer.grid = load_game_rle(file_path,  renderer.grid)
     renderer.start_loop()
