@@ -1,6 +1,8 @@
 ## Conway's game of life
 [Game of life - wiki](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
+![Sample Video](./assets/GOL_gif.gif)
+
 ### Installing
 ```python
 pip install -r requirements.txt
