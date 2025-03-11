@@ -53,10 +53,10 @@ python ./src/gol.py -r cli -f ./example_patterns/glider.rle
 
 ### Todos
 
-- [ ] Running it on just CLI would be great 🤷🏻.
-    - [ ] Complete CLIRenderer.
 - [ ] Implement saving and loading feature using .rle files.
     - [x]  Loading from .rle file
+- [x] Running it on just CLI would be great 🤷🏻.
+    - [x] Complete CLIRenderer.
 - [x] Create seperate window for rendering cells rectangle.
 - [x] Create seperate window for rendering cells rectangle.
 - [x] Command for loading file while opening program
