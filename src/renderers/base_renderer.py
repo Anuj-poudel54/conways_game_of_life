@@ -19,7 +19,7 @@ class Renderer(ABC):
         self.CELL_ROW_COUNT =  self.CELL_SURFACE_HEIGHT // self.CELL_SIZE
 
         self.auto = False
-        self.is_any_cell_alive = 0
+        self.is_any_cell_alive = False
         self.populations = 0
         self.generations = 0
 
